@@ -1,0 +1,15 @@
+[book]
+authors = ["charly vibes"]
+language = "en"
+src = "docs/src"
+title = "funkalization"
+description = "Visual semantic design workspace — versioned design semantics with evidence tracking and loss-reporting adapters."
+
+[output.html]
+default-theme = "coal"
+preferred-dark-theme = "coal"
+additional-css = ["theme/charly.css"]
+git-repository-url = "https://github.com/charly-vibes/funkalization"
+edit-url-template = "https://github.com/charly-vibes/funkalization/edit/main/{path}"
+site-url = "/funkalization/"
+no-section-label = true

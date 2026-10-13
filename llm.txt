@@ -1,0 +1,30 @@
+# funkalization — narrative summary for LLM agents
+
+funkalization is a visual semantic design workspace for the charly-vibes
+ecosystem, installed and updated by ddl (dulce-de-leche). It exists because
+design decisions live in prose, diagrams, and agent transcripts that carry no
+authority, evidence, or revision history. The tool holds a versioned design
+workspace: accepted commitments, proposals, typed design edits, generated
+obligations, and scoped evidence are first-class events. Visual diagrams are
+derived views only — actions on them invoke the same semantic operations as
+text/CLI actions, and geometry never encodes correctness.
+
+Maturity: experimental (ecosystem §5). The authoritative plan is the design
+bundle VSD-IMPLEMENTATION-2026-10-13 under openspec/design/ in the repo:
+eight falsifiable claims (C01–C08), gates G0–G8, fixtures P01–P10, and an
+order–payment–storage pilot with a positive and a negative trace oracle.
+Nothing is called complete without positive AND negative test evidence.
+
+Where things live (agents: do not duplicate these elsewhere):
+
+- openspec/design/… — implementation + verification contract (REQUIREMENTS,
+  ACCEPTANCE, RISKS, SOURCES, manifest with SHA-256 provenance)
+- openspec/changes/ — change proposals; openspec/specs/ — deployed specs
+- docs/src/ — mdBook pages only (book at https://charly-vibes.github.io/funkalization/)
+- src/ — the CLI crate (binary `funkalization`, config dir `.funkalization/`)
+
+CI gate: `just ci` (cargo fmt --all -- --check; cargo clippy -- -D warnings;
+cargo test). Releases: 5-target binary matrix with canonical naming
+`funkalization_{VERSION}_{os}_{arch}` + checksums.txt, crates.io publish.
+Pinned ecosystem dogfood installs: versions.ddl.toml (§4). Local gates:
+lefthook.yml pre-commit/pre-push.

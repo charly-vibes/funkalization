@@ -1,0 +1,15 @@
+# lefthook.yml — local gates (ecosystem §8: non-empty pre-commit AND pre-push).
+# The beads shims in .beads/hooks (core.hooksPath) chain to lefthook — this
+# config is the sanctioned extension point. Run `lefthook install` after cloning.
+
+pre-commit:
+  commands:
+    fmt-check:
+      run: cargo fmt --all -- --check
+    tests:
+      run: cargo test --quiet
+
+pre-push:
+  commands:
+    ci:
+      run: just ci

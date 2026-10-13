@@ -1,0 +1,19 @@
+# Rust
+/target
+Cargo.lock.bak
+
+# mdBook build artifacts
+/book
+# §6: release page generated from Cargo.toml at docs build time — never committed
+/docs/src/release.md
+
+# Spec deployment copies (build-time only — specs live in openspec/, never duplicated)
+/docs/src/specs/
+
+# Editors / agent-tool locals (openspec init side-effects — not fleet-tracked)
+.codex/
+.cursor/
+.agents/
+*.swp
+.idea/
+.vscode/

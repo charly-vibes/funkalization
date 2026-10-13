@@ -1,0 +1,27 @@
+# funkalization
+
+> Visual semantic design workspace — a text-and-visual means of proposing,
+> revising, and inspecting software designs while preserving semantic meaning,
+> authority, and evidence. Versioned design workspace with typed design edits,
+> generated obligations, scoped evidence, deterministic read-only projections,
+> and loss-reporting adapters toward Specodelic and OpenSpec.
+
+- **Binary:** `funkalization`
+- **Crate:** `funkalization` (crates.io, once first release is tagged)
+- **Repo:** https://github.com/charly-vibes/funkalization
+- **Book:** https://charly-vibes.github.io/funkalization/
+- **Category:** extension (charly-vibes ecosystem, managed by ddl)
+- **Maturity:** experimental
+- **Design contract:** `openspec/design/visual-semantic-design-implementation-2026-10-13/` (VSD-IMPLEMENTATION-2026-10-13) — gates G0–G8, falsifiable claims C01–C08
+- **Specs:** all spec material lives under `openspec/` in the repo (no duplicates elsewhere)
+- **CI gate:** `just ci` (cargo fmt --check + clippy -D warnings + tests)
+- **Config dir (planned):** `.funkalization/` in the target repo
+- **Ecosystem map:** https://charly-vibes.github.io/dulce-de-leche/ecosystem-map.html
+
+## Key pages
+
+- [Index](https://charly-vibes.github.io/funkalization/)
+- [Getting started](https://charly-vibes.github.io/funkalization/getting-started.html)
+- [Configuration](https://charly-vibes.github.io/funkalization/configuration.html)
+- [CLI reference](https://charly-vibes.github.io/funkalization/cli.html)
+- [Status](https://charly-vibes.github.io/funkalization/status.html)

@@ -1,0 +1,15 @@
+[package]
+name = "funkalization"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+description = "Visual semantic design workspace — versioned design semantics with evidence tracking and loss-reporting adapters"
+license = "Apache-2.0"
+repository = "https://github.com/charly-vibes/funkalization"
+keywords = ["design", "semantics", "workspace", "ai", "cli"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+
+[dev-dependencies]
+assert_cmd = "2"
