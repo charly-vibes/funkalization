@@ -17,3 +17,12 @@ Cargo.lock.bak
 *.swp
 .idea/
 .vscode/
+# turu private zone — machine-specific knowledge, never pushed (git history is forever)
+.whisper/private/
+# per-machine whisper serve bookkeeping (auto-regenerated on every recall)
+.whisper/branches/*/notes.usage.jsonl
+
+# Local scratch (downloaded archive copies; canonical inputs live in research/archives/)
+.scratch/
+# bd embedded runtime lock (auto-created per process group)
+.beads.gate.lock
