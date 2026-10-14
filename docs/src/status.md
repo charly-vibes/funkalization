@@ -10,14 +10,15 @@ exploratory; may be renamed or sunset (ecosystem §5 vocabulary).
 | `funkalization --version` | ✅ working | ddl-compatible semver output |
 | CLI scaffold (`just ci` gate) | ✅ working | fmt + clippy + tests |
 | Design contract bundle | ✅ committed | `openspec/design/visual-semantic-design-implementation-2026-10-13/` |
+| Persistent workspace core (G0–G4 slice) | ✅ tracer bullet | SQLite state+events in one transaction, replay with digest recheck, typed evaluator with independent oracle — `openspec/changes/add-persistent-tracer/` |
+| Tracer command | ✅ tracer bullet | cold-start evidence run with positive and negative outcomes, cross-process replay test |
 
 ## In progress
 
 | Area | Status | Notes |
 |------|--------|-------|
-| Gate G0 — reproduce baseline | ◻ not started | per ACCEPTANCE.md of the contract |
-| Gates G1–G4 (workspace, events, obligations, finite checks) | ◻ not started | implementation contract, not yet built |
-| Gates G5–G8 (integration, read-only diagrams, UI, tracer) | ◻ not started | nothing is "complete" without positive *and* negative test evidence (C01–C08) |
+| Gate G0 — reproduce baseline | ◐ partial | historical archive bytes unavailable and documented honestly (`research/evidence/`); Rust baseline replaces them for this experiment (funkalization-8d0) |
+| Gates G5–G8 (integration, read-only diagrams, UI, tracer) | ◐ partial | read-only JSON/HTML projections and the self-checking tracer ship in the v1 slice; integration harness, interactive UI and C01–C08 remain open (funkalization-91v, -4e2) |
 
 ## Mapped to specs
 
