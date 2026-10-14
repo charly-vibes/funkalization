@@ -1,0 +1,29 @@
+{
+  "id": "eventual",
+  "provides": [
+    "durable_write",
+    "pay",
+    "ship"
+  ],
+  "closed": true,
+  "composition": "independent",
+  "traces": [
+    [
+      "request",
+      "capture",
+      "ship"
+    ]
+  ],
+  "observation_map": {
+    "request": "request",
+    "authorize": "tau",
+    "capture": "pay",
+    "persist": "persist",
+    "ship": "ship",
+    "crash": "crash",
+    "restart": "restart",
+    "payment_failed": "payment_failed",
+    "persist_failed": "persist_failed",
+    "timeout": "timeout"
+  }
+}

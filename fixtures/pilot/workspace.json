@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "id": "paid-before-ship",
+    "required_operations": [
+      "durable_write",
+      "pay",
+      "ship"
+    ],
+    "horizon": 12,
+    "closed": true,
+    "traces": [
+      [
+        "request",
+        "pay",
+        "persist",
+        "ship"
+      ],
+      [
+        "request",
+        "pay",
+        "persist",
+        "crash",
+        "restart",
+        "ship"
+      ],
+      [
+        "request",
+        "pay",
+        "crash",
+        "restart",
+        "pay",
+        "persist",
+        "ship"
+      ],
+      [
+        "request",
+        "payment_failed"
+      ],
+      [
+        "request",
+        "pay",
+        "persist_failed"
+      ],
+      [
+        "request",
+        "pay",
+        "timeout"
+      ],
+      [
+        "request",
+        "request",
+        "pay",
+        "persist",
+        "persist",
+        "ship"
+      ],
+      [
+        "request",
+        "pay",
+        "persist_failed",
+        "persist",
+        "ship"
+      ]
+    ]
+  },
+  "binding": {
+    "id": "atomic",
+    "provides": [
+      "durable_write",
+      "pay",
+      "ship"
+    ],
+    "closed": true,
+    "composition": "independent",
+    "traces": [
+      [
+        "request",
+        "authorize",
+        "capture",
+        "persist",
+        "ship"
+      ],
+      [
+        "request",
+        "capture",
+        "persist",
+        "crash",
+        "restart",
+        "ship"
+      ],
+      [
+        "request",
+        "capture",
+        "crash",
+        "restart",
+        "capture",
+        "persist",
+        "ship"
+      ],
+      [
+        "request",
+        "payment_failed"
+      ],
+      [
+        "request",
+        "capture",
+        "persist_failed"
+      ],
+      [
+        "request",
+        "capture",
+        "timeout"
+      ],
+      [
+        "request",
+        "request",
+        "capture",
+        "persist",
+        "persist",
+        "ship"
+      ],
+      [
+        "request",
+        "capture",
+        "persist_failed",
+        "persist",
+        "ship"
+      ]
+    ],
+    "observation_map": {
+      "request": "request",
+      "authorize": "tau",
+      "capture": "pay",
+      "persist": "persist",
+      "ship": "ship",
+      "crash": "crash",
+      "restart": "restart",
+      "payment_failed": "payment_failed",
+      "persist_failed": "persist_failed",
+      "timeout": "timeout"
+    }
+  }
+}
