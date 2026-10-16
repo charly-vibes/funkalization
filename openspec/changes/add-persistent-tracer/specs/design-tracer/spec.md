@@ -53,6 +53,12 @@ The system SHALL distinguish declared reports from built-in checker evidence and
 - **AND WHEN** a human fail coexists with checker passes
 - **THEN** both are retained and acceptance is refused
 
+#### Scenario: Counterexample after acceptance
+- **GIVEN** an accepted binding with a scoped checker pass
+- **WHEN** a later declared report records a failure against that proposal
+- **THEN** the evidence and original checker result are both retained
+- **AND** the projection labels the current binding proposal challenged without changing its accepted revision
+
 ### Requirement: Safe derived artifacts
 The system SHALL provide source-addressed read-only projections and loss-reporting derived export, refuse destination overwrite, and reject source archival in this profile.
 
@@ -65,7 +71,7 @@ The system SHALL provide source-addressed read-only projections and loss-reporti
 - **THEN** it is refused and the original bytes remain intact
 
 ### Requirement: Reproducible tracer
-The system SHALL run a clean-directory tracer using checked-in independent fixtures, emit expected-versus-actual evidence, and fail if any assertion is unmet.
+The system SHALL run a clean-directory tracer using checked-in, separately specified fixtures, emit expected-versus-actual evidence, and fail if any assertion is unmet.
 
 #### Scenario: Cold run
 - **WHEN** a reader runs the documented tracer command in a fresh directory

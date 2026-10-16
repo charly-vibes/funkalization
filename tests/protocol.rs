@@ -385,3 +385,44 @@ fn judgments_record_base_revision_and_retire_superseded_acceptance() {
         .unwrap();
     assert_eq!(first["applicable"], false);
 }
+
+#[test]
+fn later_counterexample_challenges_an_accepted_binding_without_rewriting_it() {
+    let (_dir, _db, mut ws) = workspace();
+    propose(&mut ws, "accepted", tracer::ATOMIC);
+    ws.apply(&Action::Evaluate {
+        proposal_id: "accepted".into(),
+    })
+    .unwrap();
+    let accepted = ws.apply(&decide("accepted", 0)).unwrap();
+    let challenged = ws
+        .apply(&Action::Report {
+            proposal_id: "accepted".into(),
+            verdict: Verdict::Fail,
+            note: "Independent runtime observation contradicts the finite model".into(),
+        })
+        .unwrap();
+    assert_eq!(challenged.accepted, accepted.accepted);
+    assert_eq!(challenged.revision, accepted.revision);
+    assert_eq!(challenged.proposals["accepted"].judgments.len(), 1);
+    let projected = view::projection(&challenged);
+    let node = projected["elements"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|n| n["id"] == "accepted")
+        .unwrap();
+    assert_eq!(node["verification"], "challenged");
+    assert_eq!(ws.replay().unwrap(), challenged);
+}
+
+#[test]
+fn canonical_bytes_match_the_published_cross_language_digest_vector() {
+    let vector: serde_json::Value =
+        serde_json::from_str(include_str!("../fixtures/pilot/digest-vector.json")).unwrap();
+    let s = seed();
+    assert_eq!(
+        semantic_digest(&s.policy, &s.binding),
+        vector["semantic_digest"]
+    );
+}

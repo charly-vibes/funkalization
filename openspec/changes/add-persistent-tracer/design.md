@@ -1,6 +1,6 @@
 # Persistent tracer v1 decisions
 
-This contract specializes the historical VSD bundle. It does not claim all G0–G8 are implemented. Historical documents remain immutable provenance. The self-contained Rust baseline replaces unavailable M3/M4 runtime dependencies for this experiment; it is not a reproduction or verified port of those experiments.
+This contract specializes the historical VSD bundle. It does not claim all G0–G8 are implemented. Historical documents remain immutable provenance. The self-contained Rust profile does not depend on M3/M4 at runtime. Exact M2/M3/M4 source inputs were subsequently recovered and their Python suites reproduced by scripts/reproduce_baselines.py. The Rust implementation is a specialization, not a verified port. The two historical integration archives remain missing.
 
 ## Authority and scope
 
@@ -10,7 +10,7 @@ The imported JSON policy owns required operations, allowed traces, alphabet/clos
 
 ## Model and canonicalization
 
-Authoritative types are in src/model.rs; JSON uses snake_case tagged actions and deny_unknown_fields. Schema/profile/evaluator versions are fixed strings. IDs match [A-Za-z0-9_-]{1,64}. Sets use sorted BTreeSet; maps use BTreeMap. Trace collections are lexicographically sorted and deduplicated before hashing; event order inside each trace is preserved. Typed canonical JSON has integers and strings only. SHA-256 of a profile-tagged policy/binding pair identifies semantic content; name, revision, evidence, proposals, timestamps and layout are excluded. This is a domain canonicalizer, not a claim of RFC 8785 compatibility. Policy is included in every judgment scope.
+Authoritative types are in src/model.rs; JSON uses snake_case tagged actions and deny_unknown_fields. Schema/profile/evaluator versions are fixed strings. IDs match [A-Za-z0-9_-]{1,64}. Sets use sorted BTreeSet; maps use BTreeMap. Trace collections are lexicographically sorted and deduplicated before hashing; event order inside each trace is preserved. Typed canonical JSON contains no floating-point fields; it uses integers, booleans, strings, arrays and objects. SHA-256 of a profile-tagged policy/binding pair identifies semantic content; revision, evidence, proposals, timestamps and layout are excluded; binding/policy IDs are semantic and v1 has no separate display-name field. This is a domain canonicalizer, not a claim of RFC 8785 compatibility. Policy is included in every judgment scope.
 
 ## State and transactions
 
@@ -22,7 +22,7 @@ propose(id, base_revision, binding): validate ID, unique proposal ID and matchin
 
 evaluate(proposal_id): pending proposal at current base only; append checker evidence from the built-in evaluator. No accepted-state change.
 
-report(proposal_id, verdict, note): append declared human evidence only. It never discharges an obligation or impersonates checker evidence. A human fail blocks strict acceptance until a new proposal is reviewed; all origins remain visible.
+report(proposal_id, verdict, note): append declared human evidence to any known proposal, including accepted, rejected and stale history, without changing its binding or revision. A later fail challenges an accepted binding but does not revoke it automatically. Reports on historical proposals remain attributed to that proposal and do not transfer to replacements. It never discharges an obligation or impersonates checker evidence. A human fail blocks strict acceptance until a new proposal is reviewed; all origins remain visible.
 
 decide(proposal_id, base_revision, accept|reject): pending proposal and both revision guards must match. Reject records a rejected proposal without revision change. Accept requires applicable built-in nominal+behavioral passes and no human fail, then installs binding and increments revision once. Old pending proposals become stale by revision mismatch. Duplicate decisions fail.
 
@@ -32,7 +32,7 @@ All effects return JSON state or a structured error code. Commands exit 0 on suc
 
 The policy contains explicit finite prefix-closed observations, represented by maximal traces with all prefixes accepted. Concrete events map to observable labels or tau; missing mapping yields unknown. Horizon counts concrete events before hiding. Supported limits: 1 MiB input/snapshot, 128 traces, 32 events per trace, 32 horizon, 64 operations/mappings, 256 proposals and 1024 evidence records per workspace. Exhausted semantic bounds yield unknown; malformed/oversized structure is an input error. No unbounded exploration, liveness, fairness, general composition or wall-clock semantics is attempted; unsupported shared-event composition yields unsupported. Empty concrete traces or a policy with no successful ship trace cannot pass. A declared closed finite corpus is a claim about this supplied corpus only, not completeness of a real implementation.
 
-Nominal check is required-operation inclusion. Behavioral check maps each trace and checks membership in policy prefixes, plus requires at least one successful ship trace in the candidate to prevent the never-ship loophole. A failure returns the shortest offending concrete prefix (lexicographic tie-break) and its observable projection. The hand-written policy fixture is independent of the evaluator. A separate test-only state-machine oracle checks its safety meaning: request opens an order; pay accepts payment; persist records that acceptance durably; ship requires paid and durable; crash loses unpersisted payment and requires restart; durable acceptance survives restart. Payment/persistence failures never grant eligibility. Repeated request/persist are idempotent in the fixture's one-order scope. Eligibility is defined as paid AND durable AND running; ship tests that predicate. Real storage crash durability is not tested.
+Nominal check is required-operation inclusion. Behavioral check maps each trace and checks membership in policy prefixes, plus requires at least one successful ship trace in the candidate to prevent the never-ship loophole. A failure returns the shortest offending concrete prefix (lexicographic tie-break) and its observable projection. The hand-written policy fixture is specified separately from the evaluator; both have the same author, so this is not independently authored validation. Separate test-only temporal assertions check the corpus safety meaning (same implementation author; independent human oracle not claimed): request opens an order; pay accepts payment; persist records that acceptance durably; ship requires paid and durable; crash loses unpersisted payment and requires restart; durable acceptance survives restart. Payment/persistence failures never grant eligibility. Repeated request/persist are idempotent in the fixture's one-order scope. Eligibility is defined as paid AND durable AND running; ship tests that predicate. Real storage crash durability is not tested.
 
 ## Evidence, projections and adapters
 

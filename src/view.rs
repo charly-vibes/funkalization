@@ -8,17 +8,39 @@ use serde_json::{json, Value};
 pub fn projection(state: &State) -> Value {
     let current = Workspace::source_matches(state);
     let mut elements = vec![
-        json!({"id":"accepted", "source_claim_ids":[state.policy.id], "binding":state.accepted.id,"lifecycle":"accepted","provenance":"declared","verification":"inspect_scoped_evidence"}),
+        json!({"id":"workspace/accepted", "source_claim_ids":[state.policy.id], "binding":state.accepted.id,"lifecycle":"accepted","provenance":"declared","verification":"inspect_scoped_evidence"}),
     ];
     for (id, p) in &state.proposals {
         let digest = semantic_digest(&state.policy, &p.binding);
         let applicable = current
+            && p.lifecycle != "rejected"
+            && p.lifecycle != "superseded"
             && (p.base_revision == state.revision
                 || (p.lifecycle == "accepted"
                     && digest == semantic_digest(&state.policy, &state.accepted)));
-        elements.push(json!({"id":id,"source_claim_ids":[state.policy.id],"binding":p.binding.id,"lifecycle":p.lifecycle,"applicable":applicable,"subject_digest":digest,"obligations":[{"id":format!("{id}/nominal-interface"),"kind":"nominal-interface"},{"id":format!("{id}/payment-durability"),"kind":"payment-durability"}],"judgments":p.judgments,"declared_reports":p.reports}));
+        let verification = verification(state, p, applicable);
+        elements.push(json!({"id":id,"verification":verification,"source_claim_ids":[state.policy.id],"binding":p.binding.id,"lifecycle":p.lifecycle,"applicable":applicable,"subject_digest":digest,"obligations":[{"id":format!("{id}/nominal-interface"),"kind":"nominal-interface"},{"id":format!("{id}/payment-durability"),"kind":"payment-durability"}],"judgments":p.judgments,"declared_reports":p.reports}));
     }
     json!({"format":"derived_inventory_v1","source_revision":state.revision,"semantic_digest":semantic_digest(&state.policy,&state.accepted),"source_path":state.source_path,"source_fingerprint":state.source_fingerprint,"completeness":if current {"complete"} else {"failed"},"diagnostics":if current {vec![]} else {vec!["authoritative source changed or disappeared"]},"elements":elements,"state":state,"loss_report":{"round_trip_supported":false,"source_writes":false,"unsupported":["OpenSpec/Specodelic semantic write-back","general decomposition","interactive semantic editing","implementation correctness proof"]}})
+}
+fn verification(state: &State, p: &Proposal, applicable: bool) -> &'static str {
+    if !applicable {
+        return "stale_or_retired";
+    }
+    if p.reports.iter().any(|r| r.verdict == Verdict::Fail) {
+        return "challenged";
+    }
+    let mut expected = evaluate(&state.policy, &p.binding, &state.source_fingerprint);
+    expected.subject_revision = p.base_revision;
+    if !p.judgments.contains(&expected) {
+        return "unverified";
+    }
+    match (&expected.nominal, &expected.behavior) {
+        (Verdict::Fail, _) | (_, Verdict::Fail) => "refuted_in_fragment",
+        (Verdict::Pass, Verdict::Pass) => "pass_in_scope",
+        (_, Verdict::Unsupported) => "unsupported",
+        _ => "unknown",
+    }
 }
 fn escape(s: &str) -> String {
     s.replace('&', "&amp;")

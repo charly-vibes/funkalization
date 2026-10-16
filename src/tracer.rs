@@ -13,6 +13,7 @@ use std::{fs, path::Path};
 
 pub const SEED: &str = include_str!("../fixtures/pilot/workspace.json");
 pub const ATOMIC: &str = include_str!("../fixtures/pilot/atomic.json");
+pub const COMPATIBLE: &str = include_str!("../fixtures/pilot/compatible.json");
 pub const EVENTUAL: &str = include_str!("../fixtures/pilot/eventual.json");
 pub const UNMAPPED: &str = include_str!("../fixtures/pilot/unmapped.json");
 pub const SHARED: &str = include_str!("../fixtures/pilot/shared.json");
@@ -43,7 +44,7 @@ pub fn run(root: &Path) -> Result<Value> {
         ("bad", EVENTUAL, Verdict::Fail),
         ("unmapped", UNMAPPED, Verdict::Unknown),
         ("shared", SHARED, Verdict::Unsupported),
-        ("good", ATOMIC, Verdict::Pass),
+        ("good", COMPATIBLE, Verdict::Pass),
         ("stale", ATOMIC, Verdict::Pass),
     ] {
         let binding = decode(fixture.as_bytes())?;
@@ -112,6 +113,15 @@ pub fn run(root: &Path) -> Result<Value> {
         decision: Decision::Accept,
     })?;
     record(&mut rows, "accepted-once", json!(1), json!(state.revision));
+    record(
+        &mut rows,
+        "acceptance-changes-semantic-digest",
+        json!(true),
+        json!(
+            semantic_digest(&baseline.policy, &baseline.accepted)
+                != semantic_digest(&state.policy, &state.accepted)
+        ),
+    );
     let count = ws.event_count()?;
     record(
         &mut rows,
@@ -211,7 +221,7 @@ pub fn run(root: &Path) -> Result<Value> {
     );
     write_new(&root.join("view.html"), view::html(&state).as_bytes())?;
     let passed = rows.iter().all(|r| r["passed"] == true);
-    let report = json!({"profile":PROFILE,"evaluator":EVALUATOR,"package_version":env!("CARGO_PKG_VERSION"),"platform":{"os":std::env::consts::OS,"arch":std::env::consts::ARCH},"command":"cargo run --locked -- tracer <new-directory>","passed":passed,"assertions":rows,"fixtures":{"workspace":hash(SEED.as_bytes()),"atomic":hash(ATOMIC.as_bytes()),"eventual":hash(EVENTUAL.as_bytes()),"unmapped":hash(UNMAPPED.as_bytes()),"shared":hash(SHARED.as_bytes())},"limitations":["self-contained baseline; historical M3/M4 not reproduced","explicit finite model corpus, not running storage verification","read-only HTML; no visual editing equivalence claim","source archive writes unsupported","human value trial not run"]});
+    let report = json!({"profile":PROFILE,"evaluator":EVALUATOR,"package_version":env!("CARGO_PKG_VERSION"),"platform":{"os":std::env::consts::OS,"arch":std::env::consts::ARCH},"command":"cargo run --locked -- tracer <new-directory>","passed":passed,"assertions":rows,"fixtures":{"workspace":hash(SEED.as_bytes()),"atomic":hash(ATOMIC.as_bytes()),"compatible":hash(COMPATIBLE.as_bytes()),"eventual":hash(EVENTUAL.as_bytes()),"unmapped":hash(UNMAPPED.as_bytes()),"shared":hash(SHARED.as_bytes())},"limitations":["self-contained Rust profile; M2/M3/M4 reproduced separately by scripts/reproduce_baselines.py","explicit finite model corpus, not running storage verification","read-only HTML; no visual editing equivalence claim","source archive writes unsupported","human value trial not run"]});
     write_new(
         &root.join("report.json"),
         serde_json::to_string_pretty(&report)

@@ -351,10 +351,10 @@ pub fn reduce(state: &State, action: &Action, principal: u32) -> Result<State> {
                 .proposals
                 .get_mut(proposal_id)
                 .ok_or_else(|| error("not_found", "proposal"))?;
-            if p.lifecycle != "proposed" {
+            if !matches!(action, Action::Report { .. }) && p.lifecycle != "proposed" {
                 return Err(error("decided", "proposal already decided"));
             }
-            if p.base_revision != state.revision {
+            if !matches!(action, Action::Report { .. }) && p.base_revision != state.revision {
                 return Err(error("stale", "proposal is stale"));
             }
             match action {
