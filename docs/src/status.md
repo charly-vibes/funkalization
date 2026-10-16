@@ -1,41 +1,30 @@
 # Status
 
-**Maturity: [experimental](https://charly-vibes.github.io/dulce-de-leche/ecosystem-map.html)** —
-exploratory; may be renamed or sunset (ecosystem §5 vocabulary).
+**Experimental: a persistent local tracer is implemented. The full visual-design contract is not complete.** The implemented profile uses Rust and SQLite, with explicit finite payment–storage fixtures.
 
-## Implemented
+## Implemented and tested
 
-| Command / area | Status | Notes |
-|----------------|--------|-------|
-| `funkalization --version` | ✅ working | ddl-compatible semver output |
-| CLI scaffold (`just ci` gate) | ✅ working | fmt + clippy + tests |
-| Design contract bundle | ✅ committed | `openspec/design/visual-semantic-design-implementation-2026-10-13/` |
-| Persistent workspace core (G0–G4 slice) | ✅ tracer bullet | SQLite state+events in one transaction, replay with digest recheck, typed evaluator with independent oracle — `openspec/changes/add-persistent-tracer/` |
-| Tracer command | ✅ tracer bullet | cold-start evidence run with positive and negative outcomes, cross-process replay test |
+- Typed propose/evaluate/report/decide actions, Unix-owner and source-fingerprint guards.
+- Atomic state/event commits, replay integrity, restart and process-death recovery tests.
+- Separate nominal and behavioral verdicts, finite witnesses, unknown/unsupported outcomes, historical evidence and later counterexamples.
+- Read-only JSON/HTML projections, new-file-only derived exports, and explicit archive refusal.
+- A cold-start tracer and cross-process replay test, including an actual model substitution.
 
-## In progress
+## Broader gate status
 
-| Area | Status | Notes |
-|------|--------|-------|
-| Gate G0 — reproduce baseline | ◐ partial | historical archive bytes unavailable and documented honestly (`research/evidence/`); Rust baseline replaces them for this experiment (funkalization-8d0) |
-| Gates G5–G8 (integration, read-only diagrams, UI, tracer) | ◐ partial | read-only JSON/HTML projections and the self-checking tracer ship in the v1 slice; integration harness, interactive UI and C01–C08 remain open (funkalization-91v, -4e2) |
+| Gate | Evidence and remaining scope |
+|---|---|
+| G0 | M2: 16 tests; M3: 50 tests and 2,801 event sequences; M4: 18 tests reproduced. Six input hashes verified. Two historical integration archives remain missing. |
+| G1–G4 | Implemented for the declared v1 profile. General edits, decomposition and M3/M4 equivalence are not claimed. |
+| G5 | Separate installed Specodelic 0.9.0 and 0.10.0 probes with OpenSpec 0.19.0 demonstrated additive overwrite, historical overwrite and partial writes in disposable repositories. Source writing is disabled. |
+| G6 | Read-only source-addressed projections exist for the single-source model. A multi-file corpus adapter is not implemented. |
+| G7 | No interactive semantic editor or text/UI equivalence result. |
+| G8 | The local tracer is runnable; it does not complete every historical C01–C08 claim. |
 
-## Mapped to specs
+## Evidence and provenance
 
-No deployed `openspec/specs/` yet — the normative requirements are the
-`VSD-*` SHALLs in the design contract bundle under `openspec/design/`. They
-graduate into `openspec/changes/` → `openspec/specs/` as gates land. Specs
-live **only** under `openspec/` (no duplicate `specs/` trees; book links into
-the repo rather than copying).
+`research/evidence/baseline-results.json` records exact historical commands and output. `research/evidence/archive-probe.json` records the external CLI failures. The current profile and requirement-to-test matrix live in `openspec/changes/add-persistent-tracer/`.
 
-## Dogfooding
+The finite corpus and separate temporal assertions were authored during implementation. They are not an independently authored human oracle. The user volunteered as first pilot reviewer; no completed walkthrough, comparative timings or adoption results are claimed until their response is recorded.
 
-funkalization is new — no other ecosystem tool consumes it yet. Its own CI
-installs and pins pretender, wai, bd, openspec, and ddl (§4 matrix row), and
-ddl manages it in the registry (experimental/extension).
-
-## Known unknowns
-
-From the contract: Git HEADs of source snapshots, tool-version compatibility,
-Wanna integration behavior, human usability, general semantic soundness — all
-honestly UNKNOWN. See the contract's RISKS.md.
+No deployed `openspec/specs/` are claimed. The change remains reviewable under `openspec/changes/` until release/deployment and archive are authorized.

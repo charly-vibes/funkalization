@@ -15,7 +15,9 @@
 - **Design contract:** `openspec/design/visual-semantic-design-implementation-2026-10-13/` (VSD-IMPLEMENTATION-2026-10-13) — gates G0–G8, falsifiable claims C01–C08
 - **Specs:** all spec material lives under `openspec/` in the repo (no duplicates elsewhere)
 - **CI gate:** `just ci` (cargo fmt --check + clippy -D warnings + tests)
-- **Config dir (planned):** `.funkalization/` in the target repo
+- **Workspace:** explicit local SQLite path; source JSON is fingerprinted; no implicit config directory
+- **Runnable tracer:** `cargo run --locked -- tracer NEW_DIRECTORY`
+- **Current profile:** `openspec/changes/add-persistent-tracer/` (bounded local workflow; no interactive editor or source write-back)
 - **Ecosystem map:** https://charly-vibes.github.io/dulce-de-leche/ecosystem-map.html
 
 ## Key pages

@@ -1,25 +1,38 @@
 # funkalization
 
-> **Why:** Design decisions live in prose, diagrams, and agent transcripts that
-> carry no authority, evidence, or revision history — agents and humans cannot
-> tell an accepted commitment from a casual sketch, and "looks right" replaces
-> "is right". funkalization holds a versioned design workspace where accepted
-> commitments, proposals, typed design edits, obligations, and scoped evidence
-> are first-class events; visual diagrams are derived views that invoke the same
-> semantic operations as text/CLI actions and never assign correctness to shapes.
-> **Status:** [experimental](docs/src/status.md) · early scaffold — design contract committed, gates G0–G8 not yet implemented · [Motivation & design](docs/src/index.md)
+> **Why:** Reviewing a design change should reveal what changed, which obligations
+> remain unresolved, and which evidence still applies. funkalization records typed
+> proposals, guarded decisions and scoped evidence, with read-only derived views.
+> **Status:** [experimental](docs/src/status.md) — persistent local tracer implemented;
+> the broader visual workspace remains proposed.
 
 [![CI](https://github.com/charly-vibes/funkalization/actions/workflows/ci.yml/badge.svg)](https://github.com/charly-vibes/funkalization/actions/workflows/ci.yml)
 [![Docs](https://github.com/charly-vibes/funkalization/actions/workflows/docs.yml/badge.svg)](https://github.com/charly-vibes/funkalization)
 [![crates.io](https://img.shields.io/crates/v/funkalization.svg)](https://crates.io/crates/funkalization)
-[![License: Apache-2.0](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](LICENSE)
 
 A **visual semantic design workspace**: propose, revise, and inspect software
 designs while preserving semantic meaning, authority, and evidence. One tool
 in the [charly-vibes fleet](https://charly-vibes.github.io/dulce-de-leche/ecosystem-map.html),
 installed and updated by [ddl](https://charly-vibes.github.io/dulce-de-leche/).
 
-## The contract, not the claims
+## Run the tracer
+
+```sh
+cargo run --locked -- tracer target/my-tracer
+```
+
+Use a new directory. Success exits 0 and prints a report with `"passed": true`.
+Open `target/my-tracer/view.html`; inspect `report.json` and replay the database
+with `cargo run --locked -- replay target/my-tracer/workspace.db` (exit 0).
+See [the walkthrough](docs/src/getting-started.md) for prerequisites and errors.
+
+The implemented profile is in
+[add-persistent-tracer](openspec/changes/add-persistent-tracer/design.md).
+[Research inputs and evidence](research/README.md) reproduce the historical
+experiments and explain deliberate differences from M3/M4.
+
+## The broader contract
 
 The authoritative design source is the committed bundle
 **`VSD-IMPLEMENTATION-2026-10-13`** in
@@ -64,13 +77,11 @@ or `ddl install funkalization` from the ecosystem orchestrator.
 |---|---|
 | Category | extension |
 | Maturity | experimental |
-| Config dir (planned) | `.funkalization/` |
+| Workspace | Explicit SQLite path passed to the CLI |
 | Dogfood (§4) | pretender · wai · bd · openspec · ddl (pinned in `versions.ddl.toml`) |
 
 Fleet neighbors: **openspec** (change management), **specodelic** (spec format
-+ verification), **wai** (session workflow). funkalization's adapters treat
-accepted OpenSpec/Specodelic facts as authoritative for what those formats
-faithfully express.
++ verification), **wai** (session workflow). source write-back remains disabled after an isolated archive-safety probe exposed content loss.
 
 ## License
 
