@@ -30,7 +30,7 @@ fmt-check:
     cargo fmt --all -- --check
 
 clippy:
-    cargo clippy -- -D warnings
+    cargo clippy --locked --all-targets -- -D warnings
 
 # === CI gate (ecosystem §1: one way to evaluate a tool) ===
 
