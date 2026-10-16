@@ -61,7 +61,7 @@ def main():
                      'passed': result.returncode == 1 and 'FAILED' in result.stderr})
     report = {'python': sys.version, 'platform': platform.platform(), 'inputs': inputs,
               'runs': runs, 'passed': all(r['passed'] for r in runs),
-              'scope': 'M2/M3/M4 replay only; missing integration archives prevent full historical G0'}
+              'scope': 'M2/M3/M4 replay and M3 exploration over the full 8/8 input set; SRC-08 pinned to commit 2939a0b2abff5f7d6d9f9959464431684a728491'}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({'passed': report['passed'], 'suites': [(r['suite'], r['passed']) for r in runs], 'report': str(OUTPUT)}))

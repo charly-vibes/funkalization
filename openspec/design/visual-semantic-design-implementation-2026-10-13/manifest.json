@@ -1,103 +1,104 @@
 {
-  "artifact_id": "VSD-IMPLEMENTATION-2026-10-13",
-  "version": "0.1.0-proposal",
-  "title": "Visual Semantic Software Design — Implementation and Verification Contract",
-  "date": "2026-10-13",
-  "model": "OpenAI GPT-6",
-  "prov_type": "prov:Entity",
-  "prov_wasAttributedTo": "OpenAI GPT-6",
-  "prov_wasDerivedFrom": [
-    "categorical-design-substrate-2026-10-11(3).zip",
-    "designing-semantics-M2-2026-10-11(1).zip",
-    "designing-semantics-M3-2026-10-11(1).zip",
-    "designing-semantics-M4-2026-10-11(1).zip",
-    "semantic_model_context_evaluation_2026-10-11(2).md",
-    "software-design-substrate-2026-10-11(5).zip",
-    "specodelic-main(3).zip",
-    "specodelic-openspec-visual-design-2026-10-12(1).zip"
-  ],
-  "git_commit": "UNKNOWN",
-  "status": "PROPOSED; not implemented or end-to-end verified",
-  "validation": {
-    "documentation_files_hashed": 5,
-    "new_gate_runs": "NOT RUN",
-    "previous_fixture_runs": "Reported in preceding discussion; not independently rerun for this artifact"
+ "artifact_id": "VSD-IMPLEMENTATION-2026-10-13",
+ "version": "0.1.0-proposal",
+ "title": "Visual Semantic Software Design \u2014 Implementation and Verification Contract",
+ "date": "2026-10-13",
+ "model": "OpenAI GPT-6",
+ "prov_type": "prov:Entity",
+ "prov_wasAttributedTo": "OpenAI GPT-6",
+ "prov_wasDerivedFrom": [
+  "categorical-design-substrate-2026-10-11(3).zip",
+  "designing-semantics-M2-2026-10-11(1).zip",
+  "designing-semantics-M3-2026-10-11(1).zip",
+  "designing-semantics-M4-2026-10-11(1).zip",
+  "semantic_model_context_evaluation_2026-10-11(2).md",
+  "software-design-substrate-2026-10-11(5).zip",
+  "specodelic-main(3).zip",
+  "specodelic-openspec-visual-design-2026-10-12(1).zip"
+ ],
+ "git_commit": "UNKNOWN",
+ "status": "PROPOSED; not implemented or end-to-end verified",
+ "validation": {
+  "documentation_files_hashed": 5,
+  "new_gate_runs": "NOT RUN",
+  "previous_fixture_runs": "Reported in preceding discussion; not independently rerun for this artifact"
+ },
+ "input_archives_and_documents": [
+  {
+   "filename": "categorical-design-substrate-2026-10-11(3).zip",
+   "sha256": "08cbd5752370c17daaa290004df6bdd98d8f11bfe0fea18e884250eab61ecaba",
+   "bytes": 40671,
+   "git_commit": "UNKNOWN"
   },
-  "input_archives_and_documents": [
-    {
-      "filename": "categorical-design-substrate-2026-10-11(3).zip",
-      "sha256": "08cbd5752370c17daaa290004df6bdd98d8f11bfe0fea18e884250eab61ecaba",
-      "bytes": 40671,
-      "git_commit": "UNKNOWN"
-    },
-    {
-      "filename": "designing-semantics-M2-2026-10-11(1).zip",
-      "sha256": "9093f105bbeef8771fa25b2b7ae193ac2520f964369b5fdc9c00cb59cca7eca8",
-      "bytes": 14606,
-      "git_commit": "UNKNOWN"
-    },
-    {
-      "filename": "designing-semantics-M3-2026-10-11(1).zip",
-      "sha256": "aa9ca37057e31cc528c386db0e4903dc98be7f28250e62ae6c373e51cb3ba69c",
-      "bytes": 30218,
-      "git_commit": "UNKNOWN"
-    },
-    {
-      "filename": "designing-semantics-M4-2026-10-11(1).zip",
-      "sha256": "75f7604603668f4402725b74a8ad40b54f7eeccfab803925fa22495f8043efbe",
-      "bytes": 14503,
-      "git_commit": "UNKNOWN"
-    },
-    {
-      "filename": "semantic_model_context_evaluation_2026-10-11(2).md",
-      "sha256": "74fed922a945f1da7491be3b77f9d14faa187cde6bb8e26e2491267c57d28a0a",
-      "bytes": 24709,
-      "git_commit": "UNKNOWN"
-    },
-    {
-      "filename": "software-design-substrate-2026-10-11(5).zip",
-      "sha256": "54af2c389fb346e6580199b74084365ebef6643473f14b921d92daf3c97a9486",
-      "bytes": 19966,
-      "git_commit": "UNKNOWN"
-    },
-    {
-      "filename": "specodelic-main(3).zip",
-      "sha256": "040d0f3673adf7fd084d40bb0b03473c9d1548530bad293bf4d7862dd2a1ac69",
-      "bytes": 2742061,
-      "git_commit": "UNKNOWN"
-    },
-    {
-      "filename": "specodelic-openspec-visual-design-2026-10-12(1).zip",
-      "sha256": "84718544fb55ad629683f3bda55f8794992c13f1c803555523d93812b8f8efbf",
-      "bytes": 21241,
-      "git_commit": "UNKNOWN"
-    }
-  ],
-  "bundle_files": [
-    {
-      "path": "ACCEPTANCE.md",
-      "sha256": "bd8d2d73e8f27838e791824117128b5fdefce7b58e4a7ef8e921c04db70d670c",
-      "bytes": 12089
-    },
-    {
-      "path": "README.md",
-      "sha256": "57d81684b914eec26e393780568a15198a0a8113b6ce5787dd4f756c1e1bc1b2",
-      "bytes": 12219
-    },
-    {
-      "path": "REQUIREMENTS.md",
-      "sha256": "fa211f3ab6ddb7ff7bb7a52a243f40b924da0ff3a7cdee9655b161ce4dd130c4",
-      "bytes": 6228
-    },
-    {
-      "path": "RISKS.md",
-      "sha256": "f959d88f563881c83c19efe1197900d11e9c5a10a472f43c6df0343f376b3369",
-      "bytes": 7397
-    },
-    {
-      "path": "SOURCES.md",
-      "sha256": "75a14d57a48d9ae0fd62ea2ab0d9e8635fdd94a9860bd8d1132aa8eef373f0b1",
-      "bytes": 5301
-    }
-  ]
+  {
+   "filename": "designing-semantics-M2-2026-10-11(1).zip",
+   "sha256": "9093f105bbeef8771fa25b2b7ae193ac2520f964369b5fdc9c00cb59cca7eca8",
+   "bytes": 14606,
+   "git_commit": "UNKNOWN"
+  },
+  {
+   "filename": "designing-semantics-M3-2026-10-11(1).zip",
+   "sha256": "aa9ca37057e31cc528c386db0e4903dc98be7f28250e62ae6c373e51cb3ba69c",
+   "bytes": 30218,
+   "git_commit": "UNKNOWN"
+  },
+  {
+   "filename": "designing-semantics-M4-2026-10-11(1).zip",
+   "sha256": "75f7604603668f4402725b74a8ad40b54f7eeccfab803925fa22495f8043efbe",
+   "bytes": 14503,
+   "git_commit": "UNKNOWN"
+  },
+  {
+   "filename": "semantic_model_context_evaluation_2026-10-11(2).md",
+   "sha256": "74fed922a945f1da7491be3b77f9d14faa187cde6bb8e26e2491267c57d28a0a",
+   "bytes": 24709,
+   "git_commit": "UNKNOWN"
+  },
+  {
+   "filename": "software-design-substrate-2026-10-11(5).zip",
+   "sha256": "54af2c389fb346e6580199b74084365ebef6643473f14b921d92daf3c97a9486",
+   "bytes": 19966,
+   "git_commit": "UNKNOWN"
+  },
+  {
+   "filename": "specodelic-main(3).zip",
+   "sha256": "040d0f3673adf7fd084d40bb0b03473c9d1548530bad293bf4d7862dd2a1ac69",
+   "bytes": 2742061,
+   "git_commit": "2939a0b2abff5f7d6d9f9959464431684a728491",
+   "git_commit_source": "GitHub archive comment of the byte-identical snapshot; verified via git cat-file in charly-vibes/specodelic (2026-10-16)"
+  },
+  {
+   "filename": "specodelic-openspec-visual-design-2026-10-12(1).zip",
+   "sha256": "84718544fb55ad629683f3bda55f8794992c13f1c803555523d93812b8f8efbf",
+   "bytes": 21241,
+   "git_commit": "UNKNOWN"
+  }
+ ],
+ "bundle_files": [
+  {
+   "path": "ACCEPTANCE.md",
+   "sha256": "bd8d2d73e8f27838e791824117128b5fdefce7b58e4a7ef8e921c04db70d670c",
+   "bytes": 12089
+  },
+  {
+   "path": "README.md",
+   "sha256": "57d81684b914eec26e393780568a15198a0a8113b6ce5787dd4f756c1e1bc1b2",
+   "bytes": 12219
+  },
+  {
+   "path": "REQUIREMENTS.md",
+   "sha256": "fa211f3ab6ddb7ff7bb7a52a243f40b924da0ff3a7cdee9655b161ce4dd130c4",
+   "bytes": 6228
+  },
+  {
+   "path": "RISKS.md",
+   "sha256": "f959d88f563881c83c19efe1197900d11e9c5a10a472f43c6df0343f376b3369",
+   "bytes": 7397
+  },
+  {
+   "path": "SOURCES.md",
+   "sha256": "75a14d57a48d9ae0fd62ea2ab0d9e8635fdd94a9860bd8d1132aa8eef373f0b1",
+   "bytes": 5301
+  }
+ ]
 }

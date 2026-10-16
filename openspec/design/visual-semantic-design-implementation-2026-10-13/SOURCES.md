@@ -2,7 +2,7 @@
 title: "Source register and claim provenance"
 date: "2026-10-13"
 model: "OpenAI GPT-6"
-status: "Local uploaded source register; commits UNKNOWN"
+status: "Local uploaded source register; SRC-08 commit recovered and verified 2026-10-16"
 ---
 # Source register
 
@@ -17,7 +17,7 @@ All paths refer to the named **user-uploaded ZIP snapshots**, not live checked-o
 | SRC-05 | `designing-semantics-M4-2026-10-11(1).zip` → `M4_contracts/{SPECIFICATION.md,contracts.py,m3_bridge.py,test_contracts.py,test_bridge.py}` | Finite contract substitution / observable trace inclusion; explicitly scoped and non-decisive M3 bridge | Not general assume–guarantee composition or implementation proof |
 | SRC-06 | `semantic_model_context_evaluation_2026-10-11(2).md` → sections 1–10 | Independent critical evaluation of M1 and proposed narrow semantic profile | Evaluation and Python illustration, not end-to-end integration verification |
 | SRC-07 | `specodelic-openspec-visual-design-2026-10-12(1).zip` → `specodelic-openspec-visual-design-2026-10-12/{README.md,REQUIREMENTS.md,WORKFLOW.md,VISUAL-VIEWS.md,VALIDATION.md,SOURCES.md}` | Initial conservative visual workflow, source-of-truth, diagrams, pilot | Draft proposal; visual authoring not implemented |
-| SRC-08 | `specodelic-main(3).zip` → `specodelic-main/{Cargo.toml,src/graph.rs,src/archive_companion.rs,src/conform.rs,src/model_check.rs,src/packs.rs,src/acset/,docs/src/tool-relationships.md}` | Available Rust snapshot for Specodelic implementation claims and integration risks | Local version `0.8.0` declared by Cargo.toml; Git HEAD UNKNOWN; no CLI run for this bundle |
+| SRC-08 | `specodelic-main(3).zip` → `specodelic-main/{Cargo.toml,src/graph.rs,src/archive_companion.rs,src/conform.rs,src/model_check.rs,src/packs.rs,src/acset/,docs/src/tool-relationships.md}` | Available Rust snapshot for Specodelic implementation claims and integration risks | Local version `0.8.0` declared by Cargo.toml; Git commit `2939a0b2abff5f7d6d9f9959464431684a728491` recovered from the GitHub archive comment and verified in `charly-vibes/specodelic` (7 commits after v0.8.0, ancestor of upstream main); no CLI run for this bundle |
 
 ## Specific claim trace
 
@@ -36,7 +36,8 @@ All paths refer to the named **user-uploaded ZIP snapshots**, not live checked-o
 
 ## Unknowns and citation policy
 
-- No source Git commit can be recovered confidently from the supplied archive filenames alone: **UNKNOWN**.
+- **Recovery record (2026-10-16).** All eight inputs are preserved hash-verified in `research/archives/`. SRC-08's Git commit `2939a0b2abff5f7d6d9f9959464431684a728491` was recovered from the GitHub archive comment of the byte-identical snapshot (SHA-256 `040d0f36…`) and verified with `git cat-file` in `charly-vibes/specodelic`; the independent multirepo-proposal bundle pins the same SHA to the same commit. SRC-07's internal `specodelic_source_commit` remains unknown (it is a generated proposal bundle, not a repo snapshot).
+- No other source Git commit can be recovered confidently from the supplied archive filenames alone: **UNKNOWN**.
 - Separate prior discussions mention Wanna source, but no Wanna archive is attached in this turn. The Wanna runtime is **not re-inspected here**, and its integration compatibility is **UNKNOWN**.
 - No live upstream fetch, Rust CLI run or OpenSpec run was undertaken to prepare this document. This report does not claim contemporary upstream parity.
 - The uploaded `semantic_model_context_evaluation` names *earlier archive instances*, which should not be silently substituted for the current filenames; use the current manifest hashes to identify the inputs to this bundle.

@@ -1,6 +1,6 @@
 # Reproducing the design research
 
-Six original inputs recovered from `.scratch` are preserved unchanged in `archives/`. Their SHA-256 hashes match the historical design bundle's manifest. Source Git commits remain unknown; no commit identity is inferred from filenames.
+Eight original inputs are preserved unchanged in `archives/`; their SHA-256 hashes match the historical design bundle's manifest (verified 8/8 on every run). Six were recovered from `.scratch`; the two integration archives were recovered on 2026-10-16 from local conversation artifacts and Downloads, hash-verified before preservation. The Specodelic snapshot's Git commit was recovered from the GitHub archive comment and verified in the upstream repository (`2939a0b2abff5f7d6d9f9959464431684a728491`, 7 commits after the v0.8.0 tag); other sources remain without commit identity.
 
 Read the [wai distillation](../.wai/projects/funkalization/research/2026-10-16-distilled-design-research-and-tracer-decisions.md) for source conclusions, reproduction results and the reasons for the Rust profile's differences from M3/M4.
 
@@ -14,7 +14,7 @@ python3 scripts/reproduce_baselines.py
 
 Expected exit 0 and `"passed": true`. The report is `evidence/baseline-results.json`, including exact commands, Python/platform, input hashes, stdout/stderr and expected test counts: M2 16, M3 50, M4 18. It also runs the 2,801-sequence M3 exploration and an intentionally failing harness control. The negative control is successful only when the child reports failure.
 
-The original `specodelic-main(3).zip` and `specodelic-openspec-visual-design-2026-10-12(1).zip` are still absent. Full historical G0 integration cannot be reproduced without them; the missing entries remain explicit in the results.
+The full input set is complete: `specodelic-main(3).zip` (recovered byte-identical, commit-pinned as above) and `specodelic-openspec-visual-design-2026-10-12(1).zip` (recovered from Downloads) are verified alongside the other six. The input list in `evidence/baseline-results.json` records 8/8 `verified` with no `unavailable` entries.
 
 ## Installed-tool archive experiment
 
