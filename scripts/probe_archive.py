@@ -3,6 +3,7 @@
 Responsibilities: record additive loss, historical overwrite and partial-write evidence.
 Rationale: funkalization-91v must verify actual CLI behavior before enabling any source writer.
 """
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -21,8 +22,12 @@ def put(path, content):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--spk-version', choices=['0.9.0', '0.10.0'], default='0.9.0')
+    parser.add_argument('--output', type=Path, default=ROOT/'research/evidence/archive-probe.json')
+    args = parser.parse_args()
     tools = {}
-    for name, expected in [('spk', 'specodelic 0.9.0'), ('openspec', '0.19.0')]:
+    for name, expected in [('spk', 'specodelic '+args.spk_version), ('openspec', '0.19.0')]:
         path = shutil.which(name)
         if not path:
             raise SystemExit(f'{name} required for optional integration probe')
@@ -70,9 +75,9 @@ def main():
                           'returncode': result.returncode, 'before': before, 'after': after,
                           'stdout': result.stdout, 'stderr': result.stderr})
     report = {'tools': tools, 'cases': cases, 'safe_for_use': False,
-              'scope': 'Installed 0.9.0 CLI in disposable trees; not the missing historical 0.8.0 archive',
+              'scope': f'Installed {args.spk_version} CLI in disposable trees; not the missing historical 0.8.0 archive',
               'mitigation': 'funkalization archive is disabled; derived export never overwrites'}
-    output = ROOT/'research/evidence/archive-probe.json'
+    output = args.output
     output.write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({'observed': [(c['scenario'], c['observed_as_expected']) for c in cases], 'report':str(output)}))
     return 0 if all(c['observed_as_expected'] for c in cases) else 1

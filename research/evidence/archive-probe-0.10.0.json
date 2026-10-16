@@ -1,0 +1,70 @@
+{
+  "tools": {
+    "spk": {
+      "path": "/var/home/sasha/.cargo/bin/spk",
+      "version": "specodelic 0.10.0",
+      "entrypoint_sha256": "fc29a1bd27ac1236ea3674ac428b5b3e0cedacb33beff3b4e989fb34db4406dd"
+    },
+    "openspec": {
+      "path": "/home/linuxbrew/.linuxbrew/bin/openspec",
+      "version": "0.19.0",
+      "entrypoint_sha256": "e3b9fa4fa46b747187aae7e5b08df70bc77e5208cf5c39fdce55fc2db9775c2f"
+    }
+  },
+  "cases": [
+    {
+      "scenario": "additive",
+      "command": [
+        "/var/home/sasha/.cargo/bin/spk",
+        "archive-companion",
+        "probe",
+        "--json"
+      ],
+      "expected": "known unsafe path observed; keep adapter disabled",
+      "observed_as_expected": true,
+      "safe_for_use": false,
+      "returncode": 0,
+      "before": "# Storage\n\n## Requirements\n\n### Requirement: Atomicity\nThe store SHALL persist atomically.\n\n#### Scenario: Durable write\n- **WHEN** a write commits\n- **THEN** its data survives restart\n",
+      "after": "---\nid: storage\n---\n\n## ADDED Requirements\n\n### Requirement: Retry\nThe store SHALL allow retry.\n\n#### Scenario: Retry\n- **WHEN** a request is retried\n- **THEN** it is idempotent\n\n## Constraints\n",
+      "stdout": "{\"ok\":true,\"envelope_version\":\"0.1\",\"cli_version\":\"0.10.0\",\"envelope_kind\":\"ok\",\"data\":{\"archive_dir\":\"openspec/changes/archive/2026-10-16-probe\",\"change_id\":\"probe\",\"dry_run\":false,\"openspec_ran\":true,\"restored\":[\"openspec/specs/a-storage/spec.md\"]},\"warnings\":[],\"hints\":[{\"command\":\"verify the gates: just lint-specs && openspec validate --all --strict\",\"description\":\"verify the gates: just lint-specs && openspec validate --all --strict\"}],\"meta\":{\"duration_ms\":0,\"tx\":null,\"request_id\":null}}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "historical-replay",
+      "command": [
+        "/var/home/sasha/.cargo/bin/spk",
+        "archive-companion",
+        "probe",
+        "--json"
+      ],
+      "expected": "known unsafe path observed; keep adapter disabled",
+      "observed_as_expected": true,
+      "safe_for_use": false,
+      "returncode": 0,
+      "before": "# Storage\n\n## Requirements\n\n### Requirement: Atomicity\nThe store SHALL persist atomically.\n\n#### Scenario: Durable write\n- **WHEN** a write commits\n- **THEN** its data survives restart\n\n### Requirement: Later change\nPreserve this newer fact.\n",
+      "after": "---\nid: storage\n---\n\n## ADDED Requirements\n\n### Requirement: Retry\nThe store SHALL allow retry.\n\n#### Scenario: Retry\n- **WHEN** a request is retried\n- **THEN** it is idempotent\n\n## Constraints\n",
+      "stdout": "{\"ok\":true,\"envelope_version\":\"0.1\",\"cli_version\":\"0.10.0\",\"envelope_kind\":\"ok\",\"data\":{\"archive_dir\":\"openspec/changes/archive/2026-10-13-probe\",\"change_id\":\"probe\",\"dry_run\":false,\"openspec_ran\":false,\"restored\":[\"openspec/specs/a-storage/spec.md\"]},\"warnings\":[],\"hints\":[{\"command\":\"verify the gates: just lint-specs && openspec validate --all --strict\",\"description\":\"verify the gates: just lint-specs && openspec validate --all --strict\"}],\"meta\":{\"duration_ms\":0,\"tx\":null,\"request_id\":null}}\n",
+      "stderr": ""
+    },
+    {
+      "scenario": "partial-write",
+      "command": [
+        "/var/home/sasha/.cargo/bin/spk",
+        "archive-companion",
+        "probe",
+        "--json"
+      ],
+      "expected": "known unsafe path observed; keep adapter disabled",
+      "observed_as_expected": true,
+      "safe_for_use": false,
+      "returncode": 1,
+      "before": "# Storage\n\n## Requirements\n\n### Requirement: Atomicity\nThe store SHALL persist atomically.\n\n#### Scenario: Durable write\n- **WHEN** a write commits\n- **THEN** its data survives restart\n",
+      "after": "---\nid: storage\n---\n\n## ADDED Requirements\n\n### Requirement: Retry\nThe store SHALL allow retry.\n\n#### Scenario: Retry\n- **WHEN** a request is retried\n- **THEN** it is idempotent\n\n## Constraints\n",
+      "stdout": "{\"ok\":false,\"envelope_version\":\"0.1\",\"cli_version\":\"0.10.0\",\"envelope_kind\":\"error\",\"data\":null,\"warnings\":[{\"rule_name\":\"\",\"message\":\"unreadable delta /tmp/funkalization-archive-probe-5m7edoim/partial-write/openspec/specs/z-storage/spec.md: Is a directory (os error 21) \u2014 check file permissions, then re-run: spk archive-companion\"}],\"hints\":[{\"command\":\"resolve the reported cause, then re-run: spk archive-companion\",\"description\":\"resolve the reported cause, then re-run: spk archive-companion\"}],\"meta\":{\"duration_ms\":0,\"tx\":null,\"request_id\":null}}\n",
+      "stderr": "unreadable delta /tmp/funkalization-archive-probe-5m7edoim/partial-write/openspec/specs/z-storage/spec.md: Is a directory (os error 21) \u2014 check file permissions, then re-run: spk archive-companion\n"
+    }
+  ],
+  "safe_for_use": false,
+  "scope": "Installed 0.10.0 CLI in disposable trees; not the missing historical 0.8.0 archive",
+  "mitigation": "funkalization archive is disabled; derived export never overwrites"
+}
