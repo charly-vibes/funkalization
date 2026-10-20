@@ -39,6 +39,16 @@ jobs:
         with:
           mdbook-version: latest
 
+      - name: Copy OpenSpec specs into docs source
+        # Fleet standardization §2 (DDL-glq): openspec specs must render in
+        # the book — same deploy step as ddl's own docs.yml.
+        run: |
+          mkdir -p docs/src/specs
+          for dir in openspec/specs/*/; do
+            name=$(basename "$dir")
+            cp "$dir/spec.md" "docs/src/specs/$name.md"
+          done
+
       - name: Generate release-status
         # §6: version claims come from Cargo.toml, not hand-typed text.
         # docs/src/release.md is a build artifact — never committed.

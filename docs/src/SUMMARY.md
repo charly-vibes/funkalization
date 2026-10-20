@@ -7,4 +7,8 @@
 - [Release](./release.md)
 - [Status](./status.md)
 
+# Specs (deployed from openspec/)
+
+- [design-tracer](./specs/design-tracer.md)
+
 ---
