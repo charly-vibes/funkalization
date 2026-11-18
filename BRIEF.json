@@ -1,0 +1,226 @@
+{
+  "ok": true,
+  "envelope_version": "0.1",
+  "cli_version": "0.1.0",
+  "envelope_kind": "ok",
+  "data": {
+    "schema_version": "brief.v1",
+    "as_of": "2026-11-18",
+    "generated_at": "2026-11-18T21:12:09.106322685Z",
+    "sources": [
+      {
+        "name": "beads",
+        "status": "present",
+        "observed_at": "2026-11-16T21:33:23Z",
+        "staleness": "fresh",
+        "detail": null
+      },
+      {
+        "name": "git",
+        "status": "present",
+        "observed_at": "2026-11-16T12:02:07Z",
+        "staleness": "fresh",
+        "detail": null
+      },
+      {
+        "name": "openspec",
+        "status": "present",
+        "observed_at": "2026-10-16T20:16:05.753137701Z",
+        "staleness": "stale",
+        "detail": null
+      },
+      {
+        "name": "whisper",
+        "status": "present",
+        "observed_at": "2026-10-16T19:55:10Z",
+        "staleness": "stale",
+        "detail": null
+      },
+      {
+        "name": "curation",
+        "status": "present",
+        "observed_at": "2026-11-18T21:12:09.099748634Z",
+        "staleness": "fresh",
+        "detail": null
+      }
+    ],
+    "curation": {
+      "updated_at": "2026-11-18T21:12:09.099748634Z",
+      "confirmed_at": null
+    },
+    "purpose_lite": null,
+    "focus": [],
+    "in_flight": [
+      {
+        "id": "funkalization-0ur",
+        "title": "Research: Hegel property-based testing plan (antithesis-research)",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-3d5",
+        "title": "docs: apply README front-door standard v0.4 (§5.1)",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-v4i",
+        "title": "Implement Hegel property tests for funkalization",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-0ur"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-4e2",
+        "title": "Measure workspace and visual-interface value against the current review workflow",
+        "status": "open",
+        "priority": 2,
+        "blocked_by": [],
+        "age_days": 36,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-frc",
+        "title": "release: document §1 deviation until v0.1.0 (release workflow staged)",
+        "status": "open",
+        "priority": 2,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      }
+    ],
+    "blocked": [
+      {
+        "id": "funkalization-v4i",
+        "title": "Implement Hegel property tests for funkalization",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-0ur"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      }
+    ],
+    "next": [
+      {
+        "id": "funkalization-0ur",
+        "title": "Research: Hegel property-based testing plan (antithesis-research)",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-3d5",
+        "title": "docs: apply README front-door standard v0.4 (§5.1)",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-4e2",
+        "title": "Measure workspace and visual-interface value against the current review workflow",
+        "status": "open",
+        "priority": 2,
+        "blocked_by": [],
+        "age_days": 36,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-frc",
+        "title": "release: document §1 deviation until v0.1.0 (release workflow staged)",
+        "status": "open",
+        "priority": 2,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      }
+    ],
+    "parked": [],
+    "needs_retriage": [],
+    "recent": [
+      {
+        "sha": "58ed50c4127a5726ca15d3eda676189d62b59047",
+        "committed_at": "2026-11-16T12:02:07Z",
+        "subject": "docs: apply issue-review fixes to README/release tickets",
+        "outcome": null
+      },
+      {
+        "sha": "ec136f844c67cd446dba6997f05290d3420b20cf",
+        "committed_at": "2026-11-16T11:57:00Z",
+        "subject": "docs: apply issue-review fixes to README/release tickets",
+        "outcome": null
+      },
+      {
+        "sha": "d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115",
+        "committed_at": "2026-11-16T11:39:26Z",
+        "subject": "docs: apply issue-review fixes to README/release tickets",
+        "outcome": null
+      },
+      {
+        "sha": "73abf5ee65716d4fe0516f7f88170c0271f00e67",
+        "committed_at": "2026-11-16T00:21:54Z",
+        "subject": "docs: file README front-door and release tickets",
+        "outcome": null
+      },
+      {
+        "sha": "51a895da18ca00f2dca10f6dfa1c79b73e1ba27c",
+        "committed_at": "2026-10-20T19:47:58Z",
+        "subject": "docs(DDL-glq): deploy openspec specs into the book (fleet standardization §2)",
+        "outcome": null
+      }
+    ],
+    "health": {
+      "status": "amber",
+      "basis": "signals",
+      "signals": [
+        {
+          "kind": "orphan_commits",
+          "reason": "4 commits in the 14-day window link no tracker id or open work-item path: 58ed50c4127a5726ca15d3eda676189d62b59047 (docs: apply issue-review fixes to README/release tickets); 73abf5ee65716d4fe0516f7f88170c0271f00e67 (docs: file README front-door and release tickets); d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115 (docs: apply issue-review fixes to README/release tickets); ec136f844c67cd446dba6997f05290d3420b20cf (docs: apply issue-review fixes to README/release tickets)"
+        }
+      ],
+      "owner": null,
+      "reason": "orphan_commits: 4 commits in the 14-day window link no tracker id or open work-item path: 58ed50c4127a5726ca15d3eda676189d62b59047 (docs: apply issue-review fixes to README/release tickets); 73abf5ee65716d4fe0516f7f88170c0271f00e67 (docs: file README front-door and release tickets); d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115 (docs: apply issue-review fixes to README/release tickets); ec136f844c67cd446dba6997f05290d3420b20cf (docs: apply issue-review fixes to README/release tickets)"
+    },
+    "truncation": {
+      "applied": true,
+      "omitted_counts": {
+        "recent": 22
+      }
+    },
+    "head_sha": "58ed50c4127a5726ca15d3eda676189d62b59047",
+    "source_hash": "f6439fa5be5459282e52246bcfadacb3da9e02d3895fae6da8f30b47c83da4a6",
+    "warnings": []
+  },
+  "warnings": [],
+  "hints": [],
+  "meta": {
+    "duration_ms": 0,
+    "tx": null,
+    "request_id": null
+  }
+}
