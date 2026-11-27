@@ -5,7 +5,7 @@
 # below is the default. Dates are `YYYY-MM-DD` (RFC 3339 is also accepted).
 
 # One-line project purpose, used in the brief heading.
-# purpose_lite = "..."
+purpose_lite = "Visual semantic design workspace: typed proposals, guarded decisions, scoped evidence."
 
 # Focus cap. Defaults to 1 when absent.
 # max_focus = 1
@@ -14,11 +14,11 @@
 # publish_whisper = false
 
 # Human health verdict, owned by a person, never inferred from signals.
-# [health]
-# status = "green"          # green | amber | red
-# owner = "..."
-# confirmed_at = "YYYY-MM-DD"
-# reason = "..."
+[health]
+status = "amber"           # green | amber | red
+owner = "charly"
+confirmed_at = "2026-11-27"
+reason = "5 orphan commits in the 14-day window link no tracker id; kaya adoption landing should tighten commit hygiene."
 
 # Focused items. The brief reports how many sources disagree; the human decides.
 # [[focus]]

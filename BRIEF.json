@@ -5,20 +5,20 @@
   "envelope_kind": "ok",
   "data": {
     "schema_version": "brief.v1",
-    "as_of": "2026-11-18",
-    "generated_at": "2026-11-18T21:12:09.106322685Z",
+    "as_of": "2026-11-27",
+    "generated_at": "2026-11-27T20:36:36.200235936Z",
     "sources": [
       {
         "name": "beads",
         "status": "present",
-        "observed_at": "2026-11-16T21:33:23Z",
+        "observed_at": "2026-11-25T17:11:44Z",
         "staleness": "fresh",
         "detail": null
       },
       {
         "name": "git",
         "status": "present",
-        "observed_at": "2026-11-16T12:02:07Z",
+        "observed_at": "2026-11-27T20:36:26Z",
         "staleness": "fresh",
         "detail": null
       },
@@ -39,25 +39,81 @@
       {
         "name": "curation",
         "status": "present",
-        "observed_at": "2026-11-18T21:12:09.099748634Z",
+        "observed_at": "2026-11-27T20:36:33.094425023Z",
         "staleness": "fresh",
         "detail": null
       }
     ],
     "curation": {
-      "updated_at": "2026-11-18T21:12:09.099748634Z",
-      "confirmed_at": null
+      "updated_at": "2026-11-27T20:36:33.094425023Z",
+      "confirmed_at": "2026-11-27T00:00:00Z"
     },
-    "purpose_lite": null,
+    "purpose_lite": "Visual semantic design workspace: typed proposals, guarded decisions, scoped evidence.",
     "focus": [],
     "in_flight": [
+      {
+        "id": "funkalization-034",
+        "title": "Adopt kaya: research record as the single source of truth",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-034.1",
+        "title": "Bootstrap kaya record: inventory, seed, capture recipe, kaya check green locally",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-034.5",
+        "title": "kaya record gates: hooks, CI parity, record-lag",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-034.1"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-034.6",
+        "title": "kaya publication: generated dossier in docs + link check",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-034.5"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-034.7",
+        "title": "kaya SSOT cutover: versions.ddl.toml pin + duplicate-doc retirement",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-034.6"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
       {
         "id": "funkalization-0ur",
         "title": "Research: Hegel property-based testing plan (antithesis-research)",
         "status": "open",
         "priority": 1,
         "blocked_by": [],
-        "age_days": 2,
+        "age_days": 11,
         "reason": null,
         "confirmed_at": null
       },
@@ -67,7 +123,7 @@
         "status": "open",
         "priority": 1,
         "blocked_by": [],
-        "age_days": 2,
+        "age_days": 11,
         "reason": null,
         "confirmed_at": null
       },
@@ -79,7 +135,7 @@
         "blocked_by": [
           "funkalization-0ur"
         ],
-        "age_days": 2,
+        "age_days": 11,
         "reason": null,
         "confirmed_at": null
       },
@@ -89,7 +145,7 @@
         "status": "open",
         "priority": 2,
         "blocked_by": [],
-        "age_days": 36,
+        "age_days": 45,
         "reason": null,
         "confirmed_at": null
       },
@@ -99,13 +155,49 @@
         "status": "open",
         "priority": 2,
         "blocked_by": [],
-        "age_days": 2,
+        "age_days": 11,
         "reason": null,
         "confirmed_at": null
       }
     ],
     "blocked": [
       {
+        "id": "funkalization-034.5",
+        "title": "kaya record gates: hooks, CI parity, record-lag",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-034.1"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-034.6",
+        "title": "kaya publication: generated dossier in docs + link check",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-034.5"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-034.7",
+        "title": "kaya SSOT cutover: versions.ddl.toml pin + duplicate-doc retirement",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [
+          "funkalization-034.6"
+        ],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
         "id": "funkalization-v4i",
         "title": "Implement Hegel property tests for funkalization",
         "status": "open",
@@ -113,19 +205,39 @@
         "blocked_by": [
           "funkalization-0ur"
         ],
-        "age_days": 2,
+        "age_days": 11,
         "reason": null,
         "confirmed_at": null
       }
     ],
     "next": [
       {
+        "id": "funkalization-034",
+        "title": "Adopt kaya: research record as the single source of truth",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
+        "id": "funkalization-034.1",
+        "title": "Bootstrap kaya record: inventory, seed, capture recipe, kaya check green locally",
+        "status": "open",
+        "priority": 1,
+        "blocked_by": [],
+        "age_days": 2,
+        "reason": null,
+        "confirmed_at": null
+      },
+      {
         "id": "funkalization-0ur",
         "title": "Research: Hegel property-based testing plan (antithesis-research)",
         "status": "open",
         "priority": 1,
         "blocked_by": [],
-        "age_days": 2,
+        "age_days": 11,
         "reason": null,
         "confirmed_at": null
       },
@@ -135,7 +247,7 @@
         "status": "open",
         "priority": 1,
         "blocked_by": [],
-        "age_days": 2,
+        "age_days": 11,
         "reason": null,
         "confirmed_at": null
       },
@@ -145,17 +257,7 @@
         "status": "open",
         "priority": 2,
         "blocked_by": [],
-        "age_days": 36,
-        "reason": null,
-        "confirmed_at": null
-      },
-      {
-        "id": "funkalization-frc",
-        "title": "release: document §1 deviation until v0.1.0 (release workflow staged)",
-        "status": "open",
-        "priority": 2,
-        "blocked_by": [],
-        "age_days": 2,
+        "age_days": 45,
         "reason": null,
         "confirmed_at": null
       }
@@ -164,56 +266,57 @@
     "needs_retriage": [],
     "recent": [
       {
-        "sha": "58ed50c4127a5726ca15d3eda676189d62b59047",
-        "committed_at": "2026-11-16T12:02:07Z",
-        "subject": "docs: apply issue-review fixes to README/release tickets",
+        "sha": "c5dd82777ff0ed0da2191e93aacc8e736fc667b0",
+        "committed_at": "2026-11-27T20:36:26Z",
+        "subject": "sad: wire documentation gate into lefthook pre-commit and pre-push (funkalization-gyn)",
         "outcome": null
       },
       {
-        "sha": "ec136f844c67cd446dba6997f05290d3420b20cf",
-        "committed_at": "2026-11-16T11:57:00Z",
-        "subject": "docs: apply issue-review fixes to README/release tickets",
+        "sha": "0c05b800ec0dd1bef2399809e11e49fceb42094c",
+        "committed_at": "2026-11-27T20:36:14Z",
+        "subject": "kaya: publish the record — commit docs/public projection tree",
         "outcome": null
       },
       {
-        "sha": "d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115",
-        "committed_at": "2026-11-16T11:39:26Z",
-        "subject": "docs: apply issue-review fixes to README/release tickets",
+        "sha": "1e901685aea80380d71f86e51a0820c1973a8302",
+        "committed_at": "2026-11-27T20:36:06Z",
+        "subject": "kaya: bootstrap research record — seed model, capture recipe (funkalization-034.1)",
         "outcome": null
       },
       {
-        "sha": "73abf5ee65716d4fe0516f7f88170c0271f00e67",
-        "committed_at": "2026-11-16T00:21:54Z",
-        "subject": "docs: file README front-door and release tickets",
+        "sha": "f3d26ebb1de3843bbf5aad286b19bbf69d6a1ef6",
+        "committed_at": "2026-11-25T17:15:56Z",
+        "subject": "beads: file kaya-adoption epic + 4-child chain (funkalization-034)",
         "outcome": null
       },
       {
-        "sha": "51a895da18ca00f2dca10f6dfa1c79b73e1ba27c",
-        "committed_at": "2026-10-20T19:47:58Z",
-        "subject": "docs(DDL-glq): deploy openspec specs into the book (fleet standardization §2)",
+        "sha": "b2463ce88cc5252b73942df0ef140e4c57b0ebca",
+        "committed_at": "2026-11-18T21:12:09Z",
+        "subject": "chore: dogfood podras — managed block, curation scaffold, committed brief",
         "outcome": null
       }
     ],
     "health": {
       "status": "amber",
-      "basis": "signals",
+      "basis": "human",
       "signals": [
         {
           "kind": "orphan_commits",
-          "reason": "4 commits in the 14-day window link no tracker id or open work-item path: 58ed50c4127a5726ca15d3eda676189d62b59047 (docs: apply issue-review fixes to README/release tickets); 73abf5ee65716d4fe0516f7f88170c0271f00e67 (docs: file README front-door and release tickets); d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115 (docs: apply issue-review fixes to README/release tickets); ec136f844c67cd446dba6997f05290d3420b20cf (docs: apply issue-review fixes to README/release tickets)"
+          "reason": "6 commits in the 14-day window link no tracker id or open work-item path: 0c05b800ec0dd1bef2399809e11e49fceb42094c (kaya: publish the record — commit docs/public projection tree); 58ed50c4127a5726ca15d3eda676189d62b59047 (docs: apply issue-review fixes to README/release tickets); 73abf5ee65716d4fe0516f7f88170c0271f00e67 (docs: file README front-door and release tickets); b2463ce88cc5252b73942df0ef140e4c57b0ebca (chore: dogfood podras — managed block, curation scaffold, committed brief); d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115 (docs: apply issue-review fixes to README/release tickets); ec136f844c67cd446dba6997f05290d3420b20cf (docs: apply issue-review fixes to README/release tickets)"
         }
       ],
-      "owner": null,
-      "reason": "orphan_commits: 4 commits in the 14-day window link no tracker id or open work-item path: 58ed50c4127a5726ca15d3eda676189d62b59047 (docs: apply issue-review fixes to README/release tickets); 73abf5ee65716d4fe0516f7f88170c0271f00e67 (docs: file README front-door and release tickets); d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115 (docs: apply issue-review fixes to README/release tickets); ec136f844c67cd446dba6997f05290d3420b20cf (docs: apply issue-review fixes to README/release tickets)"
+      "owner": "charly",
+      "reason": "5 orphan commits in the 14-day window link no tracker id; kaya adoption landing should tighten commit hygiene."
     },
     "truncation": {
       "applied": true,
       "omitted_counts": {
-        "recent": 22
+        "next": 1,
+        "recent": 27
       }
     },
-    "head_sha": "58ed50c4127a5726ca15d3eda676189d62b59047",
-    "source_hash": "f6439fa5be5459282e52246bcfadacb3da9e02d3895fae6da8f30b47c83da4a6",
+    "head_sha": "c5dd82777ff0ed0da2191e93aacc8e736fc667b0",
+    "source_hash": "c8dc4def06bd37c0cd22a13765435838743c77b4e48ac539d3b19021589b255e",
     "warnings": []
   },
   "warnings": [],
