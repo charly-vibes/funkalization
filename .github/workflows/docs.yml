@@ -14,6 +14,7 @@ on:
       - 'llms.txt'
       - 'llm.txt'
       - 'justfile'
+      - 'scripts/**'
       - '.github/workflows/docs.yml'
     tags:
       - 'v*'
@@ -39,27 +40,13 @@ jobs:
         with:
           mdbook-version: latest
 
-      - name: Copy OpenSpec specs into docs source
-        # Fleet standardization §2 (DDL-glq): openspec specs must render in
-        # the book — same deploy step as ddl's own docs.yml.
-        run: |
-          mkdir -p docs/src/specs
-          for dir in openspec/specs/*/; do
-            name=$(basename "$dir")
-            cp "$dir/spec.md" "docs/src/specs/$name.md"
-          done
+      - name: Install just
+        uses: extractions/setup-just@v2
 
-      - name: Generate release-status
-        # §6: version claims come from Cargo.toml, not hand-typed text.
-        # docs/src/release.md is a build artifact — never committed.
-        run: |
-          VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
-          DATE=$(date +%Y-%m-%d)
-          printf '# Release %s\n\n- **Version:** %s (from Cargo.toml)\n- **Build ref:** %s\n- **Generated:** %s\n' \
-            "$VERSION" "$VERSION" "${GITHUB_SHA::7}" "$DATE" > docs/src/release.md
-
+      # Same command local development runs: specs, release page, book,
+      # publication and research trees (keep justfile:docs-build in sync).
       - name: Build docs
-        run: mdbook build
+        run: just docs-build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

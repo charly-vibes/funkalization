@@ -41,9 +41,26 @@ ci:
 
 # === Docs (ecosystem §2) ===
 
-# Build the mdBook and place the publication and research trees inside the
-# artifact (pattern: charly-vibes/kaya justfile:docs @ v0.4.1)
-docs-build:
+# Copy deployed specs into the book source (same step as docs.yml — keep
+# the two in sync)
+specs-docs:
+    mkdir -p docs/src/specs
+    for dir in openspec/specs/*/; do \
+        name=$(basename "$dir"); \
+        cp "$dir/spec.md" "docs/src/specs/$name.md"; \
+    done
+
+# §6: version claims come from Cargo.toml, not hand-typed text — build artifact
+release-status:
+    VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1); \
+    DATE=$(date +%Y-%m-%d); \
+    printf '# Release %s\n\n- **Version:** %s (from Cargo.toml)\n- **Build ref:** %s\n- **Generated:** %s\n' \
+        "$VERSION" "$VERSION" "$(git rev-parse --short=7 HEAD)" "$DATE" > docs/src/release.md
+
+# Build the mdBook with specs and release page rendered, then place the
+# publication and research trees inside the artifact (pattern:
+# charly-vibes/kaya justfile:docs @ v0.4.1)
+docs-build: specs-docs release-status
     mdbook build
     python3 scripts/build-publications.py
 

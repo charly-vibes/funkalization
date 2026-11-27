@@ -21,6 +21,9 @@ Cargo.lock.bak
 .whisper/private/
 # per-machine whisper serve bookkeeping (auto-regenerated on every recall)
 .whisper/branches/*/notes.usage.jsonl
+.whisper/env.usage.jsonl
+# per-machine pretender runtime state (checks, findings, history)
+.pretender/
 
 # Local scratch (downloaded archive copies; canonical inputs live in research/archives/)
 .scratch/

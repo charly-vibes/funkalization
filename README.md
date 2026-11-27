@@ -28,7 +28,7 @@ with `cargo run --locked -- replay target/my-tracer/workspace.db` (exit 0).
 See [the walkthrough](docs/src/getting-started.md) for prerequisites and errors.
 
 The implemented profile is in
-[add-persistent-tracer](openspec/changes/add-persistent-tracer/design.md).
+[add-persistent-tracer](openspec/changes/archive/2026-10-16-add-persistent-tracer/design.md).
 [Research inputs and evidence](research/README.md) reproduce the historical
 experiments and explain deliberate differences from M3/M4.
 
