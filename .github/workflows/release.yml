@@ -164,13 +164,26 @@ jobs:
 
           cd dist && sha256sum *.tar.gz *.zip > checksums.txt
 
+      # Rung-2 fleet rollout (beads wild-0yt, openspec
+      # add-wild-contract-bundle-convention task 3.2): extract the contract
+      # bundle from the exact release checkout (this job's checkout, the same
+      # tree the published binaries were built from) and attach it to the
+      # release — the dist/funkalization-*.tar.gz glob below picks it up. The
+      # pinned extractor version is part of the bundle's trust chain
+      # (manifest.extractor_version) — never `latest`.
+      - name: Install wild extractor
+        run: cargo install wild-vibes --version 0.2.1 --locked
+
+      - name: Extract contract bundle
+        run: bash scripts/make-contract-bundle.sh "${GITHUB_REF_NAME#v}" dist
+
       - name: Create GitHub Release
         run: |
           TAG="${GITHUB_REF_NAME}"
           PRERELEASE=""
           [[ "${TAG}" == *-* ]] && PRERELEASE="--prerelease"
           gh release create "${TAG}" \
-            dist/funkalization_* dist/checksums.txt \
+            dist/funkalization_* dist/funkalization-*.tar.gz dist/checksums.txt \
             --generate-notes ${PRERELEASE}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
