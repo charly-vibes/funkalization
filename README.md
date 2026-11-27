@@ -58,6 +58,16 @@ bundle in `openspec/design/`, change proposals in `openspec/changes/`,
 deployed specs in `openspec/specs/` once gates land. Specs are **not**
 duplicated into `docs/` or a separate `specs/` tree.
 
+## Research record
+
+The research/design/decision record is event-sourced with
+[kaya](https://github.com/charly-vibes/kaya): `.kaya/ledger.jsonl` is the
+append-only ledger, and `docs/research/` + `docs/public/` are generated
+projections — never hand-edit them. Capture a snapshot with `just
+record-capture` (observes the wai tree and git history, serialized, skipped on
+a dirty tree); verify with `just record-verify`; the full gate is `just
+record-check` (also run in CI and the pre-push hook).
+
 ## Development
 
 ```sh
@@ -78,7 +88,7 @@ or `ddl install funkalization` from the ecosystem orchestrator.
 | Category | extension |
 | Maturity | experimental |
 | Workspace | Explicit SQLite path passed to the CLI |
-| Dogfood (§4) | pretender · wai · bd · openspec · ddl (pinned in `versions.ddl.toml`) |
+| Dogfood (§4) | pretender · wai · bd · openspec · ddl · kaya (pinned in `versions.ddl.toml`) |
 
 Fleet neighbors: **openspec** (change management), **specodelic** (spec format
 + verification), **wai** (session workflow). source write-back remains disabled after an isolated archive-safety probe exposed content loss.
