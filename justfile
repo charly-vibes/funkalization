@@ -70,3 +70,7 @@ record-capture:
 # Verify the committed record against its projections without writing
 record-verify:
     kaya check
+
+# Full record gate: verify, lag (mode warn|fail)
+record-check mode="warn": record-verify
+    python3 scripts/record-lag.py --mode {{mode}} --bound 60

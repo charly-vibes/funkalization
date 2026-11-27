@@ -8,6 +8,8 @@ pre-commit:
     sad-check:
       run: sad check
 # sad:managed:end
+    record-verify-staged:
+      run: kaya check --index --fail-on-stale-authored
     fmt-check:
       run: cargo fmt --all -- --check
     tests:
@@ -19,5 +21,7 @@ pre-push:
     sad-check:
       run: sad check
 # sad:managed:end
+    record-verify:
+      run: just record-verify
     ci:
       run: just ci

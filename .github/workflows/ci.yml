@@ -40,6 +40,9 @@ jobs:
       - name: Install ecosystem tools (§4 dogfood matrix, pinned)
         run: cargo install --locked pretender@0.7.0 wai-cli@2026.9.28 dulce-de-leche@0.8.0
 
+      - name: Install kaya (record compiler, pinned)
+        run: cargo install --locked --git https://github.com/charly-vibes/kaya --tag v0.4.1 kaya-vibes
+
       - name: Install bd (beads, pinned §4)
         run: |
           tmp=$(mktemp -d)
@@ -51,5 +54,13 @@ jobs:
       # repo's CI immediately, not wait for the next hub conformance run.
       - name: Smoke live Pages URL
         run: curl -fsS --max-time 10 --retry 2 https://charly-vibes.github.io/funkalization/ >/dev/null
+      # Run the record gates: warn on pull requests, fail on main.
+      # This is the same `just record-check` developers run locally.
+      - name: Run record gates
+        run: |
+          mode=warn
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then mode=fail; fi
+          just record-check "$mode"
+
       - name: Run CI pipeline
         run: just ci
