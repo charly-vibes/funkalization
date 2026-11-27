@@ -4,6 +4,10 @@
 
 pre-commit:
   commands:
+# sad:managed:start
+    sad-check:
+      run: sad check
+# sad:managed:end
     fmt-check:
       run: cargo fmt --all -- --check
     tests:
@@ -11,5 +15,9 @@ pre-commit:
 
 pre-push:
   commands:
+# sad:managed:start
+    sad-check:
+      run: sad check
+# sad:managed:end
     ci:
       run: just ci
