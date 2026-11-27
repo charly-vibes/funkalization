@@ -41,8 +41,15 @@ ci:
 
 # === Docs (ecosystem §2) ===
 
+# Build the mdBook and place the publication and research trees inside the
+# artifact (pattern: charly-vibes/kaya justfile:docs @ v0.4.1)
 docs-build:
     mdbook build
+    python3 scripts/build-publications.py
+
+# Fail when the built book contains a relative link the artifact cannot resolve
+links: docs-build
+    python3 scripts/check-links.py
 
 docs-clean:
     rm -rf book
