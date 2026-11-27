@@ -26,3 +26,7 @@ Cargo.lock.bak
 .scratch/
 # bd embedded runtime lock (auto-created per process group)
 .beads.gate.lock
+
+# kaya record locals (regenerated; never tracked)
+.kaya/build-state.json
+.kaya/capture.lock
