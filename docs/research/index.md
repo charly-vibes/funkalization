@@ -6,13 +6,20 @@
 
 ### Artifacts
 - funkalization/Artifact/03af30a — 03af30a880ed405002430c646fd2d3251637b799
+- funkalization/Artifact/0c05b80 — 0c05b800ec0dd1bef2399809e11e49fceb42094c
+- funkalization/Artifact/0cdcdfe — 0cdcdfe6802086701074caead088790b840694ed
+- funkalization/Artifact/1e90168 — 1e901685aea80380d71f86e51a0820c1973a8302
 - funkalization/Artifact/1ff5037 — 1ff503709970bfae62dc0a85efe021ed1cdb5492
 - funkalization/Artifact/208a2f8 — 208a2f86f971d00a2bfc2a43e66071f22725a14e
 - funkalization/Artifact/26e96e5 — 26e96e54fa7dc35bd6f9e0d89738704b7d2f7db8
 - funkalization/Artifact/2f78a29 — 2f78a29f029a499c8e297702dbaa8ac226141bbd
+- funkalization/Artifact/351b298 — 351b2981d84ae6b64807e4af56ad5fd799685bd5
 - funkalization/Artifact/3c31f78 — 3c31f78745f816df29e62075fae4e34e552ce44f
+- funkalization/Artifact/48bd217 — 48bd2176712768b6706af3dc270ba3da6b22ec03
 - funkalization/Artifact/5106846 — 51068469bbed5e3d4d4826178f04f478b32d69d0
+- funkalization/Artifact/5153273 — 5153273649ff99bae49d86b1dc28860d43d8ca1b
 - funkalization/Artifact/51a895d — 51a895da18ca00f2dca10f6dfa1c79b73e1ba27c
+- funkalization/Artifact/53dbc45 — 53dbc4541aaa738b8e9a3b49a45e9890c416acfb
 - funkalization/Artifact/5758448 — 5758448e69729c63daaf75fcdd59478eaf01be4c
 - funkalization/Artifact/58ed50c — 58ed50c4127a5726ca15d3eda676189d62b59047
 - funkalization/Artifact/5a1f87a — 5a1f87a2dd1892b9fde9f29f6067d140d8c0ca63
@@ -20,6 +27,7 @@
 - funkalization/Artifact/71f978c — 71f978cb8b7427bf89280e93c492f8c362d345eb
 - funkalization/Artifact/73abf5e — 73abf5ee65716d4fe0516f7f88170c0271f00e67
 - funkalization/Artifact/777beb9 — 777beb98bf1a01ae0c2ad25c97b92f0f96c9acf7
+- funkalization/Artifact/9123db4 — 9123db4e05bf4646e76f4ef322c9567ffedc33bb
 - funkalization/Artifact/9d3ac4c — 9d3ac4c7f146cf6997654ec30e5f09a4f3bd749a
 - funkalization/Artifact/9d8bc13 — 9d8bc13caf8fa5a739bcdc4a5a6500fba43a419a
 - funkalization/Artifact/9e7114e — 9e7114e4b500869163bebb7404d5a1c23329c397
@@ -29,9 +37,11 @@
 - funkalization/Artifact/b7df434 — b7df4344d92a833d8fbbae8efc965e7b843cb2b2
 - funkalization/Artifact/bf94a4a — bf94a4ace46eeb47cfc3788bb32245bd2e4e7bbe
 - funkalization/Artifact/c41e157 — c41e1570ea6754c2084ecd1fbeb78abc5cb1f0b9
+- funkalization/Artifact/c5dd827 — c5dd82777ff0ed0da2191e93aacc8e736fc667b0
 - funkalization/Artifact/d4ccccb — d4ccccbb5a8dbb275d9ee44b7a26c925a7ce8115
 - funkalization/Artifact/d653b58 — d653b587acce7b9ddc0561412d81f2c5f210674c
 - funkalization/Artifact/designs-2026-10-16-decision-record-for-funkalization-5fs-the-normati — .wai/projects/funkalization/designs/2026-10-16-decision-record-for-funkalization-5fs-the-normati.md
+- funkalization/Artifact/eb0060c — eb0060cbcce4ebc8c8570f5d39d598569b233660
 - funkalization/Artifact/ec136f8 — ec136f844c67cd446dba6997f05290d3420b20cf
 - funkalization/Artifact/ec4b6ff — ec4b6ff3f5cf086104bceed4dd941e34724ceb61
 - funkalization/Artifact/f3d26eb — f3d26ebb1de3843bbf5aad286b19bbf69d6a1ef6
@@ -40,5 +50,5 @@
 - funkalization/Artifact/research-2026-10-16-distilled-design-research-and-tracer-decisions — .wai/projects/funkalization/research/2026-10-16-distilled-design-research-and-tracer-decisions.md
 - funkalization/Artifact/research-2026-10-16-validation-2026-10-16-just-ci-passed-19-rust-test — .wai/projects/funkalization/research/2026-10-16-validation-2026-10-16-just-ci-passed-19-rust-test.md
 
-_38 nodes from 57 events._
+_48 nodes from 67 events._
 <!-- kaya:end generated:orientation.research-map -->
